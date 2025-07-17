@@ -6,3 +6,4 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 Playwright_Automation_VscExt/
+mypubkey.asc
