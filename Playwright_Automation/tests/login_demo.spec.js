@@ -19,7 +19,7 @@ test('Demo Login Test 1', async ({page}) => {
 	await page.getByRole('link', {name: 'Sign in'}).click()
 })
 
-test.only('Demo Login Test 2', async ({page}) => {
+test('Demo Login Test 2', async ({page}) => {
 	page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/')
 	// await page.pause()
 
@@ -34,4 +34,23 @@ test.only('Demo Login Test 2', async ({page}) => {
 		.click()
 	await page.getByText('Abanoub Admin').click()
 	await page.getByRole('menuitem', {name: 'Logout'}).click()
+})
+
+test.only('Demo Login Test 3', async ({page}) => {
+	await page.goto('https://admin-demo.nopcommerce.com/login')
+	await page.getByRole('textbox', {name: 'Email:'}).click()
+	await page.getByRole('textbox', {name: 'Email:'}).press('ControlOrMeta+a')
+	await page.getByRole('textbox', {name: 'Email:'}).fill('a')
+	await page.getByRole('textbox', {name: 'Email:'}).click()
+	await page
+		.getByRole('textbox', {name: 'Email:'})
+		.fill('admin@yourstore.com')
+	await page.getByRole('textbox', {name: 'Password:'}).click()
+	await page
+		.getByRole('textbox', {name: 'Password:'})
+		.press('ControlOrMeta+a')
+	await page.getByRole('textbox', {name: 'Password:'}).fill('admin')
+	await page.pause()
+	// await page.getByRole('button', {name: 'Log in'}).click()
+	// await page.getByRole('link', {name: 'Logout'}).click()
 })
