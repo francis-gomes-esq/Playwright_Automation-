@@ -53,4 +53,5 @@ test.only('Demo Login Test 3', async ({page}) => {
 	await page.pause()
 	// await page.getByRole('button', {name: 'Log in'}).click()
 	// await page.getByRole('link', {name: 'Logout'}).click()
+	await page.close()
 })
