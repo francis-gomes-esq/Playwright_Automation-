@@ -30,16 +30,21 @@ test('Assertions Demo', async ({page}) => {
 	await expect(page.getByRole('heading', {name: 'The Kitchen'})).toHaveText(
 		'The Kitchen'
 	)
-	await expect(
-		page.getByRole('heading', {name: 'The Kitchen'})
-	).notToHaveText('The Kitchen')
-	await page.pause()
+	// await expect(
+	// 	page.getByRole('heading', {name: 'The Kitchen'})
+	// ).notToHaveText('The Kitchen')
 
 	// check attribute value
 	await expect(
 		page.getByRole('heading', {name: 'The Kitchen'})
-	).toHaveAttribute('class', '/.*css-dpmy2a/')
-	await expect(page.getByRole('heading', {name: 'The Kitchen'})).toHaveClass(
-		'/.*css-dpmy2a/'
-	)
+	).toHaveAttribute('class', /.*css-dpmy2a/)
+	await expect
+		.soft(page.getByRole('heading', {name: 'The Kitchen'}))
+		.toHaveClass(/.*css-dpmy2a/)
+	await expect(page).toHaveURL('https://kitchen.applitools.com/')
+	await expect(page).toHaveTitle(/.*Kitchen/)
+	await page.pause()
+
+	// Visual validation with screenshot
+	await expect(page).toHaveScreenshot()
 })
