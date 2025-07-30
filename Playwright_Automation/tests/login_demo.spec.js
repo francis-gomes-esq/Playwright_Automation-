@@ -9,7 +9,6 @@ test('Demo Login Test 1', async ({page}) => {
 	await page
 		.getByRole('textbox', {name: 'Enter your password'})
 		.fill('Password123')
-
 	/* 
 		Note: if the selector appears instantly, it may not wait! As demonstrated in the two examples below. 
 		*/
@@ -49,8 +48,10 @@ test.only('Demo Login Test 3', async ({page}) => {
 	await page
 		.getByRole('textbox', {name: 'Password:'})
 		.press('ControlOrMeta+a')
-	await page.getByRole('textbox', {name: 'Password:'}).fill('admin')
-	await page.pause()
+	// await page.getByRole('textbox', {name: /^Password:$/}).fill('admin')
+
+	await page.getByLabel({name: 'Password:'}).fill('admin')
+	// await page.pause()
 	// await page.getByRole('button', {name: 'Log in'}).click()
 	// await page.getByRole('link', {name: 'Logout'}).click()
 	await page.close()
